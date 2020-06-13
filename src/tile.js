@@ -11,4 +11,4 @@ const Tile = ({src}) => {
 		</div>
   )
 }
-module.exports = Tile
+export default Tile

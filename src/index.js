@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react'
+import Tile from './tile'
 import PropTypes from 'prop-types'
 
 const Masonry = (props) => {
