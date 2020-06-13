@@ -4,7 +4,7 @@
   "description": "react image masonry",
   "main": "build/index.js",
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "^16.13.1"
   },
   "dependencies": {
     "prop-types": "^15.7.2"

@@ -6,6 +6,22 @@ const Masonry = (props) => {
   const ref = useRef()
   const [columns, setColumns] = useState(1)
 
+  useEffect(() => {
+    const getColumns = (width) => {
+      return props.breakPoints.reduceRight((memo, current, i) => {
+        return current < width ? memo : i;
+      }, props.breakPoints.length) + 1;
+    }
+    const onResize = () => {
+      const cols = getColumns(ref.current.offsetWidth);
+      if(cols !== columns){
+        setColumns(cols)
+      }
+    }
+    window.addEventListener('resize', onResize)
+    onResize()
+    return ()=> window.removeEventListener('resize', onResize)
+  },[columns, props.breakPoints])
   const partitionTiles = () => {
     let cols = []
 		for(let i = 0; i < columns; i++){
@@ -36,22 +52,6 @@ const Masonry = (props) => {
     })
   }
 
-  useEffect(() => {
-    const getColumns = (width) => {
-      return props.breakPoints.reduceRight((memo, current, i) => {
-        return current < width ? memo : i;
-      }, props.breakPoints.length) + 1;
-    }
-    const onResize = () => {
-      const cols = getColumns(ref.current.offsetWidth);
-      if(cols !== columns){
-        setColumns(cols)
-      }
-    }
-    window.addEventListener('resize', onResize)
-    onResize()
-    return ()=> window.removeEventListener('resize', onResize)
-  },[columns, props.breakPoints])
 
   return (
   <div ref={ref} style={{
