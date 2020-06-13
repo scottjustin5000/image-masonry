@@ -22,6 +22,7 @@ const Masonry = (props) => {
     onResize()
     return ()=> window.removeEventListener('resize', onResize)
   },[columns, props.breakPoints])
+  
   const partitionTiles = () => {
     let cols = []
 		for(let i = 0; i < columns; i++){
